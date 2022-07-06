@@ -12,4 +12,4 @@ def index(request, pagename):
         'last_updated': pg.update_date,
         'page_list':Page.objects.all()
     }
-    return render(request, 'pages/page.html', context)
+    return render(request, 'pages/page.html', context)jj

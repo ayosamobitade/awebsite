@@ -26,9 +26,9 @@ def contact(request):
             return HttpResponseRedirect('/contact?submitted=True')
         else:
             form = ContactForm()
-            if 'submitted' in request.Get:
+            if 'submitted' in request.GET:
                 submitted = True
             
         return render(request, 'page/contact.html',{
-            'form': form, 'page_list':Page.objects.all(), 'submitted':submitted
+            'form': form, 'page_list': Page.objects.all(), 'submitted': submitted
         })

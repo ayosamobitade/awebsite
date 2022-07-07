@@ -1,4 +1,4 @@
-{% extends "pages.page.html" %}
+{% extends "pages/page.html" %}
 {% block title %}Contact US{% endblock title %}
 
 {% block content %}
@@ -17,4 +17,7 @@
             <td><input type="submit" value="SUbmit" ></td>
         </tr>
     </table>
+    {% csrf_token %}
 </form>
+{% endif %}
+{% endblock content %}

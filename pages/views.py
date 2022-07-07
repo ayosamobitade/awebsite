@@ -29,6 +29,6 @@ def contact(request):
         if 'submitted' in request.GET:
             submitted = True
             
-    return render(request, 'page/contact.html',{
+    return render(request, 'pages/contact.html',{
         'form': form, 'page_list': Page.objects.all(), 'submitted': submitted
         })

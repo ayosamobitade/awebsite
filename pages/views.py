@@ -1,7 +1,9 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from .models import Page
+from .forms import ContactForm
 
 def index(request, pagename):
     pagename = '/' + pagename
@@ -13,3 +15,20 @@ def index(request, pagename):
         'page_list':Page.objects.all()
     }
     return render(request, 'pages/page.html', context)
+
+
+def contact(request):
+    submitted = False
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            return HttpResponseRedirect('/contact?submitted=True')
+        else:
+            form = ContactForm()
+            if 'submitted' in request.Get:
+                submitted = True
+            
+        return render(request, 'page/contact.html',{
+            'form': form, 'page_list':Page.objects.all(), 'submitted':submitted
+        })

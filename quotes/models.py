@@ -22,4 +22,6 @@ class Quote(models.Model):
     phone = models.CharField(max_length = 200, blank = True)
     email = models.EmailField()
     web = models.URLField(blank = True)
+    description = models.TextField()
+    sitestatus = models.CharField(max_length = 40, choices= STATUS_CHOICE)
     

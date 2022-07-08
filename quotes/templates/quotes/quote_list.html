@@ -1,0 +1,12 @@
+{% extends 'quotes/quotes.html' %}
+{% block title %}All quotes {% endblock title %}
+
+{% block title %}
+<h1> All Quote</h1>
+<ul>
+    {% for quote in all_quotes %}
+    <li>{{ quote.name }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}

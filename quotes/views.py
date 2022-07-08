@@ -15,11 +15,10 @@ def quote_req(request):
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/quote/?submitted=True')
-        else:
-            form = QuoteForm()
-            if 'submitted' in request.GET:
-                submitted = True
+    else:
+        form = QuoteForm()
+        if 'submitted' in request.GET:
+            submitted = True
     
-    return render(request, 'quotes/quote.html',
-    {'form' form, 'page_list': Page.objects.all(), 'submitted':submitted})
+    return render(request, 'quotes/quote.html', {'form' form, 'page_list': Page.objects.all(), 'submitted':submitted})
 

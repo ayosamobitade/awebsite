@@ -14,6 +14,11 @@ class QuoteList(ListView):
     model = Quote
     context_object_name = 'all_quotes'
 
+    def get_context_date(self, **kwargs):
+        context = super(QuoteList, self).get_context_data(**kwargs)
+        context['page_list'] = Page.objects.all()
+        return context
+
 def quote_req(request):
     submitted = False
     if request.method == 'POST':

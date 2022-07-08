@@ -100,3 +100,7 @@ input{
     border: 1px solid green;
     border-radius: 3px;
 }
+
+.required lavbel:after{
+    content: "*";
+}

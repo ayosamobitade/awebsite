@@ -18,9 +18,10 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 
 urlpatterns = [
+    path('testpage', TemplateView.as_view(template_name='pages/page.html')),
     path('admin/', admin.site.urls),
     path('quote/', include('quotes.urls')),
     path('', include('pages.urls')),
-    path('testpage', TemplateView.as_view(template_name='pages/page.html')),
+    
     
 ]

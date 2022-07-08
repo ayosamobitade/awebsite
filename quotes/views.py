@@ -5,8 +5,14 @@ from django.http import HttpResponseRedirect
 
 from .models import Quote
 from .forms import QuoteForm
+from django.views.generic import ListView
 
 from pages.models import Page
+
+
+class quotelist(ListView):
+    model = Quote
+    context_object_name = 'all_quotes'
 
 def quote_req(request):
     submitted = False

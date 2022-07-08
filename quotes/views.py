@@ -19,5 +19,4 @@ def quote_req(request):
         form = QuoteForm()
         if 'submitted' in request.GET:
             submitted = True
-    return render(request, 'quote/quote.html', {'form':form, 'page_list': Page.objects.all(), 'susbmitted':submitted })
-    
+    return render(request, 'quote/quotes.html', {'form':form, 'page_list': Page.objects.all(), 'susbmitted':submitted })

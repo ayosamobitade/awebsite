@@ -10,7 +10,7 @@ from django.views.generic import ListView
 from pages.models import Page
 
 
-class quotelist(ListView):
+class QuoteList(ListView):
     model = Quote
     context_object_name = 'all_quotes'
 

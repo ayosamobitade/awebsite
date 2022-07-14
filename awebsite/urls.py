@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
+from django.views.generic.base import TemplateView
+from quotes.views import Register
 
 urlpatterns = [
     path('testpage', TemplateView.as_view(template_name='pages/page.html')),

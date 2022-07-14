@@ -15,7 +15,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 
 
-
 class QuoteList(ListView):
     model = Quote
     context_object_name = 'all_quotes'
@@ -39,4 +38,11 @@ def quote_req(request):
     return render(request, 'quotes/quotes.html', {'form':form, 'page_list': Page.objects.all(), 'susbmitted':submitted })
 
 
-   
+class Register(CreateView):
+    template_name = 'registration/register.html'
+    form_class = UserCreationForm
+    success_url = reverse_lazy('register-success')
+
+    def form_valid(self, form):
+        form.save()
+        return HttpResponseRedirect(self.success_url)

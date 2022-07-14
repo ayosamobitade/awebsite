@@ -14,7 +14,16 @@
 <body>
 <header id="wrapper">
     <div id="header">
-        <div id="logo"><img src="{% static 'logo.jpg' %}"></div>
+        <div id="logo"><img src="{% static 'logo.jpg' %}">
+        <span style="float:rigth;">
+        {% if user.us_authenticated %}
+        Hello, {{ user.username }}. <a href="{% url 'logout' %}?next=/">Log out</a>.
+        {% else %} 
+        Not logged in. <a href="{% url 'login' %}?next=/">Log in</a>.
+        {% endif %}
+        </span>
+        </div>
+        
         <div id="topbanner"><img src="{% static 'top_banner.png' %}" width="800" height="200" alt="a website banner"></div>
 </header>
 <aside id="leftsidebar">

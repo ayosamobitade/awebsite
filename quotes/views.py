@@ -61,11 +61,9 @@ class Register(CreateView):
         return HttpResponseRedirect(self.success_url)
 
 
-class QuoteView(DetailView):
-    model = Quote
+class QuoteView(LoginRequiredMixin, DetailView):
+    login_url = reverse_lazy('login')
     context_object_name = 'quote'
 
-    def get_context_data(self, **kwargs):
-        context = super(QuoteView, self).get_context_data(**kwargs)
-        context['page_list'] = page.objects.all()
-        return context
+    def get_context_data(self):
+        return Quote.objects.filter(username=self.request.user)

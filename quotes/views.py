@@ -17,7 +17,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class QuoteList(ListView):
+class QuoteList(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
     context_object_name = 'all_quotes'
 

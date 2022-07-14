@@ -1,0 +1,22 @@
+{% extends "base.html %"}
+
+{% block title %} Quote Login {% enblock title %}
+{% block sidenav %} 
+<li> <a href="/">Homee</a></li>
+{% endblock sidenav %}
+{% block content %}
+<h1> Please Login</h1>
+<p>You must be logged in to submit or view quotes. </p>
+<form method="post" action="{% url 'login' %"}">
+<table>
+    {{ form.as_table }}
+    <tr>
+        <td>&nbsp;</td>
+        <td><imput type="submit" value="login"></imput></td>
+    </tr>
+</table>
+<p> Not registered yet? <a href="{% url 'register' %}">Register here</a>.</p>
+<input type="hidden" name="next" value="{{ next }}" />
+{% csrf_token %}
+</form>
+{% endblock content %}

@@ -14,11 +14,16 @@ from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class QuoteList(ListView):
-    model = Quote
+    login_url = reverse_lazy('login')
     context_object_name = 'all_quotes'
+
+    def get_queryset(self):
+        return Quote.objects.filter(username=self.request.user)
+
 
     def get_context_date(self, **kwargs):
         context = super(QuoteList, self).get_context_data(**kwargs)

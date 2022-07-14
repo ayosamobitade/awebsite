@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from .models import Quote
 from .forms import QuoteForm
 from django.views.generic import ListView
-
+from django.views.generic.detail import DetailView
 from pages.models import Page
 
  # creating users permission
@@ -59,3 +59,13 @@ class Register(CreateView):
     def form_valid(self, form):
         form.save()
         return HttpResponseRedirect(self.success_url)
+
+
+class QuoteView(DetailView):
+    model = Quote
+    context_object_name = 'quote'
+
+    def get_context_data(self, **kwargs):
+        context = super(QuoteView, self).get_context_data(**kwargs)
+        context['page_list'] = page.objects.all()
+        return context

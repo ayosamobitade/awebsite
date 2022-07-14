@@ -13,6 +13,7 @@ from pages.models import Page
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 
 
 class QuoteList(ListView):
@@ -24,12 +25,19 @@ class QuoteList(ListView):
         context['page_list'] = Page.objects.all()
         return context
 
+
+@login_required(login_url=reverse_lazy('login'))
 def quote_req(request):
     submitted = False
     if request.method == 'POST':
         form = QuoteForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            quote = form.save(commit=False)
+            try:
+                quote.username = request.user
+            except Exception:
+                pass
+            quote.save()
             return HttpResponseRedirect('/quote/?submitted=True')
     else:
         form = QuoteForm()

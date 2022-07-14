@@ -17,7 +17,7 @@ class QuoteList(ListView):
     def get_context_date(self, **kwargs):
         context = super(QuoteList, self).get_context_data(**kwargs)
         context['page_list'] = Page.objects.all()
-        return context|
+        return context
 
 def quote_req(request):
     submitted = False

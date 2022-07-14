@@ -9,6 +9,12 @@ from django.views.generic import ListView
 
 from pages.models import Page
 
+ # creating users permission
+from django.views.generic.edit import CreateView
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+
+
 
 class QuoteList(ListView):
     model = Quote
@@ -31,3 +37,6 @@ def quote_req(request):
         if 'submitted' in request.GET:
             submitted = True
     return render(request, 'quotes/quotes.html', {'form':form, 'page_list': Page.objects.all(), 'susbmitted':submitted })
+
+
+   

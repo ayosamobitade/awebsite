@@ -13,7 +13,8 @@
     <tr><td>Job Description:</td><td>{{ quote.description }}</td></tr>
     <tr><td>Site Status:</td><td>{{ quote.get_sitestatus_display }}</td></tr>
     <tr><td>Priority:</td><td>{{ quote.get_priority_display }}</td></tr>
-    <tr><td>Submit Date:</td><td>{{ quote.submitted|date:'m-d-y' }}</td></tr>
-    <tr><td>Email:</td><td>{{ quote.email }}</td></tr>
-    <tr><td>Email:</td><td>{{ quote.email }}</td></tr>
+    <tr><td>Submitted Date:</td><td>{{ quote.submitted|date:'m-d-y' }}</td></tr>
+    <tr><td>Quote Date:</td><td>{{ quote.quotedate|date:"m-d-y"|default:"pending" }}</td></tr>
+    <tr><td>Quote Price:</td><td>{{ quote.quoteprice|default:"--" }}</td></tr>
+    <p></p>
 </table>

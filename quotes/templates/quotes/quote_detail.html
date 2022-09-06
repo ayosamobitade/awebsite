@@ -1,0 +1,10 @@
+{% extend "quotes/quote.html" %}
+
+{% block title %}All quotes {% endblock title %}
+{% block content %}
+<h1>Quote Detail</h1>
+
+<table class="quote">
+    <tr><td>ID:</td><td>{{ quote.id }}</td></tr>
+    <tr><td>Name:</td><td>{{ quote.company }}</td></tr>
+</table>

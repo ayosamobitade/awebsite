@@ -29,7 +29,7 @@ def contact(request):
                 cd['subject'],
                 cd['message'],
                 cd.get('email', 'noreply@example.com'),
-                ['siteowmner@example.com'],
+                ['ayosamobitade@gmail.com'],
                 connection = con
                 )
             return HttpResponseRedirect('/contact?submitted=True')

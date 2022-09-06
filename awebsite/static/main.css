@@ -81,12 +81,13 @@ ul.errorlist {
 
 input, textarea{
     width:100%;
-    padding: 5px !important;
+    padding: 5px!important;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
+    border-sizing: border-box;
     border-radius:3px;
     border-style: solid;
-    border_width: 1px;
+    border-width: 1px;
     border-color: rgb(169,169,169)
 }
 
